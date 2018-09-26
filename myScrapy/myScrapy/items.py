@@ -9,6 +9,6 @@ import scrapy
 
 #爬虫数据结构
 class MyscrapyItem(scrapy.Item):
-    # define the fields for your item here like:
-    # 固定写法, 所有数据都是字符串
+	# define the fields for your item here like:
+	# 固定写法, 所有数据都是字符串
 	name = scrapy.Field()

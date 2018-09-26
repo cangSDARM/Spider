@@ -75,7 +75,7 @@ sess: 会话自动保存Cookie
 #---------------------------------xpath
 xp = etree.HTML(html)	#解析html文档
 list = xp.xpath("//book")	#xpath规则
-node = list.xpath("./div")	#可以一直xpath下去
+node = list.xpath("./div")	#可以一直xpath下去. xpath返回一个列表
 
 #---------------------------------Regex
 patten = re.compile("<div\sclass=''(.*?)</div>", re.S)	#re.S全文匹配, re.I忽略大小写
