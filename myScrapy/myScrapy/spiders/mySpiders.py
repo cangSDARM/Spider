@@ -41,15 +41,22 @@ class myCrawlSpider(CrawlSpider):
 	allowd_domains = ['www.baidu.com']
 	start_urls = ['http://www.baidu.com/news']
 	
-	page_lx = LinkExtractor(allow=("start=\d+"))	#匹配连接. allow表示匹配规则
+	page_lx = LinkExtractor(allow=("start=\d+"))	#匹配页面中的连接. allow表示匹配规则
 	page_lxs = LinkExtractor(restrict_xpaths=("//div"))	#使用xpath匹配连接.
 	
 	#根据匹配顺序调用callback. 匹配到重复的按照定义顺序调用第一个
 	rules = [
 		# fllow是否跟进: 获取到网页后是否继续匹配规则
+		#process_links表示重新修改response的url, 处理反爬虫
 		# 其它参数可以做规则过滤.
-		Rule(page_lx, callback='parseContent', follow=True)
+		Rule(page_lx, callback='parseContent', follow=True, process_links = "linkP")
 	]
+	
+	# 重新处理每个response的url
+	def linkP(self, links):
+		for link in links:
+			print(link.url)
+		return links
 	
 	#CrawlSpider不能callback parse!
 	# 内部使用parse实现其逻辑, 覆盖将运行失效

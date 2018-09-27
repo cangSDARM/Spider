@@ -38,6 +38,12 @@ DOWNLOAD_DELAY = 3		#下载延迟. 3s
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
+#LOG日志功能. 将控制台log转存为文件
+#LOG_ENABLED = True		#是否启用日志功能
+#LOG_STDOUT = True		#是否转储到文件
+#LOG_FILE = 'spider.log'
+#LOG_LEVEL = "INFO"		#日志打印级别(大于或等于). CRITICAL > ERROR > WARNING > INFO > DEBUG
+
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
