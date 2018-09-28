@@ -62,5 +62,17 @@ class myCrawlSpider(CrawlSpider):
 	# 内部使用parse实现其逻辑, 覆盖将运行失效
 	def parseContent(self, response):
 		#不用yield request. 因为Rule写好了
-		
 		yield item
+		
+#使用FormRequest发送post请求
+#模拟登陆. 先get后post
+class SLogin(scrapy.Spider):
+	name = 'login'
+	allowd_domains = ['www.baidu.com']
+	start_urls = ('www.baidu.com')
+	
+	def parse(self):
+		yield scrapy.FormRequest(response, formdata={'email':'', 'passwd':''}, callback=self.parseL)
+		
+	def parseL(self, response):
+		pass
