@@ -21,13 +21,16 @@ class mySpider(scrapy.Spider):
 		item = MyscrapyItem()
 		item['name'] = rawdata	#MyscrapyItem的name字段
 		
+		#itemLoad在item.py里的itemLoad类说明
+		
 		#yield 如果不是request或item, 则返回错误信息
 		# request最好放item前
 		
 		#重新向Engine申请url, 并设定下次处理函数
 		# callback可以随意指定. parse只是第一次调用必须定义
 		# dont_filter是否忽略域限制
-		yield scrapy.Request(url, callback = self.parse, dont_filter=True)	
+		# 将meta数据一同调给callback: response.meta['meta0'] 调用
+		yield scrapy.Request(url, callback = self.parse, dont_filter=True, meta={meta0:""})	
 		
 		#返回数据
 		yield item	#交给Pipeline

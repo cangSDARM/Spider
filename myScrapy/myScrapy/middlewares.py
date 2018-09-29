@@ -68,10 +68,28 @@ class MyscrapyDownloaderMiddleware(object):
 		crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
 		return s
 
+	#修改请求
 	def process_request(self, request, spider):
 		# Called for each request that goes through the downloader
 		# middleware.
-
+		
+		#无密码代理:
+		port = '80'
+		ip = '127.0.0.1'
+		request.meta['proxy'] = "http://" + ip + port
+		
+		#需要密码的代理:
+		# http是文本传输协议, 需要将byte字节转为string.
+		# base64 将ASCII码外的编码转为可ASCII编码的范围, 并转为字符串
+		import base64
+		based = base64.b64encode(proxy['userpasswd'])
+		request.meta['proxy'] = "http://" + ip + port
+		request.headers['Proxy-Authorization'] = 'Basic ' + based
+		
+		#修改请求头:
+		useragent = ""
+		request.headers.setdefault("User-Agent", useragent)
+		
 		# Must either:
 		# - return None: continue processing this request
 		# - or return a Response object

@@ -4,7 +4,7 @@
         |-  ProjectName             全局逻辑
 		|		|-  __init__.py		全局初始化
 		|		|-  items.py		数据结构
-		|		|-  middlewares.py
+		|		|-  middlewares.py	Spider Middlewares 和 Downloader Middlewares
 		|		|-  pipelines.py	数据管道文件
 		|		|-  settings.py		全局设置文件
 		|		|-	start.py		(自己加)自动化爬虫
