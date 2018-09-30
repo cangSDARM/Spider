@@ -28,6 +28,7 @@ ROBOTSTXT_OBEY = False	# 是否遵循robots协议
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 3		#下载延迟. 3s
+RANDOMIZE_DOWNLOAD_DELAY = True		#随机下载延迟 0 - 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
